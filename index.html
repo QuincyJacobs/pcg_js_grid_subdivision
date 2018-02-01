@@ -10,10 +10,17 @@
 	<body>
 		<div id="header"></div>
 		<div id="body">
-			 <canvas id="canvas" width="1280px" height="720px"></canvas>
-			 <div id="button" class="button clickable">Press</div>
+			<div id="options">
+				<div class="option_box">
+					<div class="option_title unselectable">line amount</div>
+					<form>
+						<input type="text" id="draw_line_amount" class="input_field" maxlength="4" value="100"></input>
+					</form>
+				</div>
+			</div>
+			<canvas id="canvas" width="1280px" height="720px"></canvas>
+			<div id="button" class="button clickable unselectable">Generate Lines</div>
 		</div>
 		<div id="footer"></div>
 	</body>
-	
 </html>

@@ -2,7 +2,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
-	background-color: #009999;
+	background-color: #bababa;
 }
 
 #body {
@@ -13,19 +13,59 @@ html, body {
 }
 
 #canvas {
-	margin: 25px auto;
+	margin: 10px auto;
 	background-color: #ffffff;
 }
 
 #button {
-	margin: 25px auto;
+	margin: 10px auto;
 	width: 200px;
 	height: 50px;
 	line-height: 50px;
-	color: yellow;
-	background-color: green;
+	background-color: #37cc70;
+	border: 2px solid green;
+	border-radius: 10px;
+}
+
+#options {
+	margin: 10px auto;
+}
+
+.option_box {
+	margin: 0 auto;
+	width: 120px;
+	background: #DDDDDD;
+	text-align: center;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+.option_title {
+	height: 20px;
+	font-size: 20;
+	font-weight: 900;
+}
+
+.input_field {
+	margin-bottom: 10px;
+	width: 100px;
+	height: 20px;
+	font-size: 20;
+	line-height: 20px;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 10px;
 }
 
 .clickable {
 	cursor: pointer;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

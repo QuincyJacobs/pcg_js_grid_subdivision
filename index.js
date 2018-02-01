@@ -4,7 +4,7 @@
 var splitArray = [];
 var canvas;
 var ctx;
-var minSize = 30; // minimum size of a block
+var minSize = 30; // TODO: minimum size of a block
 
 $(document).ready(function() {
 	canvas = document.getElementById("canvas");
@@ -23,8 +23,9 @@ $(document).ready(function() {
 
 	$(".button").click(function(){
 
-		// test
-		for(var i=0; i<1000;i++){
+		var lineAmount = document.getElementById("draw_line_amount").value;
+
+		for(var i=0; i<lineAmount;i++){
 			drawLine();
 		}
 		redrawCanvas();
@@ -120,14 +121,12 @@ Line.prototype.getClosestLineFromArray = function(baseLine, lineArray) {
 	for(var i = 0; i<lineArray.length; i++) {
 		// if array line doesn't parallel base line
 		if(lineArray[i].isHorizontal() == baseLine.isHorizontal()) {
-			// get proximity to each other
-			var proximity = this.getProximity(lineArray[i]);
-
 			// check if the line range is in the same range of the line to draw
-			// TODO: fix range
 			if(this.isInRange(lineArray[i])){
 				// check if the line is not the base line
 				if(lineArray[i] !== baseLine){
+					// get proximity to each other
+					var proximity = this.getProximity(lineArray[i]);
 					// if first line or closest proxomity
 					if(closestProximity == null || proximity < closestProximity){
 						closestProximity = proximity;
@@ -148,14 +147,10 @@ function drawLine(){
 		// get random line to start drawing from
 		var baseLine = splitArray[getRandomNumber(0, splitArray.length-1)];
 	}
-	//console.log(baseLine);
 
 	// grab random position on line
 	var newLine = baseLine.getRandomPosition();
-	
-
 	var targetLine = newLine.getClosestLineFromArray(baseLine, splitArray);
-	//console.log(targetLine);
 
 	if(baseLine.isHorizontal()){
 		newLine.y1 = targetLine.y1;
@@ -164,11 +159,7 @@ function drawLine(){
 		newLine.x1 = targetLine.x1;
 	}
 	splitArray.push(newLine);
-	newLine.color = "#00FF00"
-	//console.log(newLine);
 	newLine.draw();
-	newLine.color = "#000000"
-	//console.log("===================");
 }
 
 function getRandomNumber(min, max) {
