@@ -4,7 +4,7 @@
 var splitArray = [];
 var canvas;
 var ctx;
-var minSize = 30; // TODO: minimum size of a block
+var minSize = 50; // TODO: minimum size of a block
 
 $(document).ready(function() {
 	canvas = document.getElementById("canvas");
@@ -23,7 +23,8 @@ $(document).ready(function() {
 
 	$(".button").click(function(){
 
-		var lineAmount = document.getElementById("draw_line_amount").value;
+		var lineAmount = parseInt(document.getElementById("draw_line_amount").value);
+		minSize = parseInt(document.getElementById("min_block_size").value);
 
 		for(var i=0; i<lineAmount;i++){
 			drawLine();
@@ -143,9 +144,17 @@ function drawLine(){
 	var baseLine = new Line(0,0,0,0);
 
 	// TODO: improve this while to check for x times and then move on to new line
+	var i = 0;
 	while(baseLine.getLength() < 2*minSize){
 		// get random line to start drawing from
 		var baseLine = splitArray[getRandomNumber(0, splitArray.length-1)];
+		i++;
+
+		//TODO: review this limit
+		if(i == 1000){
+			console.log("Error finding valid lines");
+			return null;
+		}
 	}
 
 	// grab random position on line
@@ -180,4 +189,5 @@ function redrawCanvas(){
 // timeout on automatic drawing to show lines being drawn one by one
 // set constraints for lines (how close to one another is acceptable)
 // set constraint for amount of lines (when does the drawing stop)
+// decide up front which direction the line will be drawn to from the baseline (now it always chooses the closest line in whatever direction)
 // ...
